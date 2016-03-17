@@ -1,9 +1,22 @@
 <p>This is the partial for view 1.</p>
-<form name="f"  novalidate>
+<form name="editForm" novalidate>
+    <div>
+        <label> name - {{name}}</label><br>
+        <label> copy - {{copy}}</label>
+    </div>
 
 
-    <input ui-dir name="a" type="text" ng-model="mod" required/>
-    <label>{{mod}}</label>
-    <button type="submit" ng-disabled="f.$error.float">ok</button>
+    <input name="name" ui-dir type="text" ng-model="name"/>
+    <input name="copy" ui-dir type="text" ng-model="name"/>
 
+    <ng-form isolate-form name="isolatedForm" data-isolate-form style="border: 1px solid red;">
+        <select name="class" ui-dir ng-model="class" ng-options="item.value for item in [{value:'1'},{value:'2'}]">
+        </select>
+        <input name="copy" ui-dir type="text" ng-model="copy"/>
+        <!--      <input  name="class" type="text" ng-model="class"/>-->
+        <button type="button" ng-disabled="!isolatedForm.$error  ">add</button>
+    </ng-form>
+
+
+    <button type="button" ng-disabled="editForm.$valid">save</button>
 </form>
