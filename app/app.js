@@ -20,27 +20,40 @@ angular.module('myApp', [
         return {
             require: 'ngModel',
             link: function (scope, elem, attr, ngModel) {
-                elem.css({color: 'red'});
+               // elem.css({color: 'red'});
 
+var i=0;
 
+              /*  ngModel.$parsers.unshift(function (viewValue) {
 
-                ngModel.$parsers.unshift(function (viewValue) {
-
-                    if (ngModel.$isEmpty(viewValue)) {
-                        ngModel.$setViewValue('0');
-                        ngModel.$render()
-                        return '0';
-                    } else return viewValue
+                   // if (ngModel.$isEmpty(viewValue)) {
+                      //  ngModel.$setViewValue('0');
+                      //  ngModel.$render()
+                       // return '0eee';
+                   // }
+                   // else
+                    i++
+                    return '0'
                 });
 
                 ngModel.$formatters.unshift(
                     function (modelValue) {
                         if (ngModel.$isEmpty(modelValue)) {
                             // ngModel.$setValidity('float', true);
-                            return '0';
-                        } else return modelValue
+                            return '999';
+                        }
+                        else return modelValue.toUpperCase()
                     }
-                );
+                );*/
+
+
+                //ng-disabled="f.$error.validCharacters"
+                ngModel.$validators.validCharacters = function(modelValue, viewValue) {
+                    var value = modelValue || viewValue;
+                    return /[a-z]+/.test(value) ||  /[A-Z]+/.test(value)
+
+                       // /\W+/.test(value); // /[0-9]+/.test(value)
+                };
             }
         }
     })
