@@ -53,7 +53,7 @@ var i=0;
                     return /[a-z]+/.test(value) ||  /[A-Z]+/.test(value)
 
                        // /\W+/.test(value); // /[0-9]+/.test(value)
-                }; //
+                };
             }
         }
     })
