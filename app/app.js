@@ -41,6 +41,31 @@ angular.module('myApp', [
                         } else return modelValue
                     }
                 );
+                /*
+                Пример валидатора, проверяющего параметры пароля — не менее 6 символов, как минимум, 1 цифра и, как минимум, один нецифровой символ (демо):
+    mod.directive('strongPassRequired', function () {
+        var isValid = function(s) {
+            return s && s.length > 5 && /\D/.test(s) && /\d/.test(s);
+        };
+
+        return {
+            require:'ngModel',
+            link:function (scope, elm, attrs, ngModelCtrl) {
+
+                ngModelCtrl.$parsers.unshift(function (viewValue) {
+                    ngModelCtrl.$setValidity('strongPass', isValid(viewValue));
+                    return viewValue;
+                });
+
+                ngModelCtrl.$formatters.unshift(function (modelValue) {
+                    ngModelCtrl.$setValidity('strongPass', isValid(modelValue));
+                    return modelValue;
+                });
+            }
+        };
+    });
+                */
+                
             }
         }
     })
