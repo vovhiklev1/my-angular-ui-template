@@ -2,30 +2,21 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('app',['ui.router'])
         .config(config);
 
-    config.$inject = ['$stateProvider', '$urlRouterProvider'];
+   /// config.$inject = [ '$stateProvider', '$urlRouterProvider'];
 
-    function config($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when('', '/home');
+    function config( $stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.when('', 'main');
 
         $stateProvider
-            .state('login', {
-                url: '/login',
-                controller: 'AuthController',
-                templateUrl: 'ekasud/core/views/login.html'
+            .state('main', {
+                url: '/main',
+                templateUrl: 'views/main.html',
+                controller: 'mainController as main'
             })
-            .state('desktop', {
-                url: '/desktop',
-                templateUrl: 'ekasud/core/views/desktop.html',
-                controller: 'DesktopController as desktopCtrl',
-                resolve: {
-                    desktopConfig: ['desktop', function (desktop) {
-                        return desktop.init();
-                    }]
-                }
-            })
+
     }
 
 })();
