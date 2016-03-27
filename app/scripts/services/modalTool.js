@@ -12,7 +12,6 @@
         });
 
         function action(scope) {
-            var a='';
             angular.extend(modal, {
                 scope: scope
             });
@@ -21,12 +20,12 @@
                 animation: true,
                 templateUrl: './app/views/modal.html',
                 // controller: ModalInstanceController,
-                size: 'md',
+                size: 'md'/*,
                 resolve: {
                     items: function () {
                         return modal.scope.a = 'item1';
                     }
-                }
+                }*/
             }).result.then(function (selectedItem) {
                     modal.scope.productsCtrl.addLayout();
                 }, function () {
