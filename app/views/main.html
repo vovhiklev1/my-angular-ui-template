@@ -1,42 +1,17 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-
-            <form role="form">
-                <p class="radio-inline">Набор данных</p>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio">Option 1
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio">Option 2
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="optradio">Option 3
-                </label>
-            </form>
+        <div class="col-md-6">
+            <div layout></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6" products-form>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Идентификатор</th>
-                    <th>Название</th>
-                    <th>Стоимость</th>
-                    <th>Количество</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                </tr>
-
-                </tbody>
-            </table>
+        <div class="col-md-6">
+            <input type="button" class="btn btn-default" ng-click="addLayout()" value="addCollection"/>
         </div>
     </div>
 </div>

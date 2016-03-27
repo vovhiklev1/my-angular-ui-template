@@ -5,7 +5,7 @@
         .module('app',['ui.router'])
         .config(config);
 
-   /// config.$inject = [ '$stateProvider', '$urlRouterProvider'];
+    config.$inject = [ '$stateProvider', '$urlRouterProvider'];
 
     function config( $stateProvider, $urlRouterProvider) {
         $urlRouterProvider.when('', 'main');
@@ -13,8 +13,8 @@
         $stateProvider
             .state('main', {
                 url: '/main',
-                templateUrl: 'views/main.html',
-                controller: 'mainController as main'
+                templateUrl: 'app/views/main.html',
+                controller: 'mainController as mainCtrl'
             })
 
     }
