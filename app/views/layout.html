@@ -1,0 +1,60 @@
+<section>
+        <form>
+            <p style="display: inline-block;
+                       margin: 20px 0 10px 0;
+                       padding-right: 20px;">Набор данных</p>
+            <label class="radio-inline">
+                <input choice-data type="radio" name="lg" ng-model="dataChoice" value="lg">Large
+            </label>
+            <label class="radio-inline">
+                <input choice-data type="radio" name="md" ng-model="dataChoice" value="md">Middle
+            </label>
+            <label class="radio-inline">
+                <input choice-data type="radio" name="manual" ng-model="dataChoice" value="manual">Manual
+            </label>
+        </form>
+        <div ng-if="layoutCtrl.products.objectData.length" class="table-responsive">
+            <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th ng-repeat="head in layoutCtrl.products.header" ng-init="layoutCtrl.asc=''"
+                        ng-click="layoutCtrl.sort=($index); layoutCtrl.asc='-'">
+                        <label ng-bind="head"></label>{{layoutCtrl.asc }}{{layoutCtrl.sort}}
+                        <i ng-if="!layoutCtrl.sort" class="fa fa-sort"></i>
+                        <i ng-if="$index==layoutCtrl.sort && layoutCtrl.sort > 0" class="fa fa-sort-desc"></i>
+                        <i ng-if="$index==layoutCtrl.sort && layoutCtrl.sort < 0" class="fa fa-sort-up"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="row in layoutCtrl.products.rows | orderBy: layoutCtrl.asc +''+ layoutCtrl.sort "
+                    ng-click="layoutCtrl.selectRow(row)">
+                    <td ng-repeat="item in row">
+                        <div ng-bind="item"></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p ng-if="layoutCtrl.selectedRow.length" style="margin: 0 0 20px 0;">Selected: {{layoutCtrl.selectedRow[0]}}
+            ({{layoutCtrl.selectedRow[1]}} {{layoutCtrl.selectedRow[2]}} {{layoutCtrl.selectedRow[3]}} ) </p>
+</section>
+
+
+
+
+  <!--  <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+    <button type="button" class="btn btn-default" ng-click="open('lg')">Large modal</button>
+    <button type="button" class="btn btn-default" ng-click="open('sm')">Small modal</button>
+    <button type="button" class="btn btn-default" ng-click="toggleAnimation()">Toggle Animation ({{ animationsEnabled }})</button>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>-->
+
+
+<!--
+<ul class="pagination">
+    <li><a href="#">1</a></li>
+    <li class="active"><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+</ul>-->
