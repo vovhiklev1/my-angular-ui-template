@@ -14,4 +14,20 @@
             <input type="button" class="btn btn-default" ng-click="productsCtrl.open()" value="addCollection"/>
         </div>
     </div>
+
+    <div class="row" ng-controller="date">
+        <div class="col-md-6">
+            <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+            </p>
+            <label ng-click="getTimeStamp()" >timestamp {{stamp}}</label>
+            <label ng-class="{'alerta': cl}">ex</label>
+            <label>minDate {{minDate}}</label>
+            <label>maxDate {{maxDate}}</label>
+        </div>
+    </div>
+
 </div>
