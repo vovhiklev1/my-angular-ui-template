@@ -1,0 +1,14 @@
+function mainCtrl($scope, inbox, $q) {
+            var srt = function (a, b) {
+                console.log(this)
+                console.log(a,b)
+                console.log(this.b)
+            }
+
+            var bound= angular.bind({a : 1, b : 2}, srt,8,9);
+            bound();
+            
+            
+Object {a: 1, b: 2}
+ 8 9
+ 2
