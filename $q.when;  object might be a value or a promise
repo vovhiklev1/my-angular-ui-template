@@ -1,0 +1,40 @@
+ function mainCtrl($scope, inbox,$q) {
+            $q.when(inbox.getMsg1(),function (res) {
+                    $scope.test = res + ' success'
+                },
+                function (res) {
+                    $scope.test = res + ' err'
+                }
+            );
+            $q.when(inbox.getMsg2(),function (res) {
+                    $scope.test = res + ' success'
+                },
+                function (res) {
+                    $scope.test = res + ' err'
+                }
+            )
+  }
+            
+            
+angular.module('app')
+    .service('inbox', function ($timeout, $q) {
+
+        angular.extend(this, {
+            getMsg1: getMsg1,
+            getMsg2: getMsg2
+        })
+
+        function getMsg1(){
+            var deffered = $q.defer();
+            $timeout(function(){
+                deffered.resolve('ok')
+            },1500);
+
+            return deffered.promise;
+        }
+        
+        function getMsg2(){
+            return 'noPromise';
+        }
+        
+    })
