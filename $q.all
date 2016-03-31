@@ -1,0 +1,39 @@
+function mainCtrl($scope, inbox, $q) {
+            var promiseObj = {
+                getMsg1: inbox.getMsg1(),
+                getMsg2: inbox.getMsg2()
+            };
+
+            $q.all(promiseObj).then(function (res,res2) {
+                console.log(res.getMsg1)
+                console.log(res.getMsg2)
+            }, function (err) {
+                console.log(err)
+            });
+}        
+            
+angular.module('app')
+    .service('inbox', function ($timeout, $q) {
+
+        angular.extend(this, {
+            getMsg1: getMsg1,
+            getMsg2: getMsg2
+        })
+
+        function getMsg1(){
+            var deffered = $q.defer();
+            $timeout(function(){
+                deffered.resolve('1000')
+            },3000);
+
+            return deffered.promise;
+        }
+        function getMsg2(){
+            var deffered = $q.defer();
+            $timeout(function(){
+                deffered.reject('2000')
+            },1000);
+
+            return deffered.promise;
+        }
+    })
