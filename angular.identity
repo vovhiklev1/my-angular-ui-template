@@ -1,0 +1,10 @@
+ var fun = function (v) {
+                return v+1
+            }
+            var variable;
+
+            var ident = function (fn, val) {
+                return (fn || angular.identity)(val)
+            }
+            console.log(ident(fun,2))
+            console.log(ident(variable,2))
