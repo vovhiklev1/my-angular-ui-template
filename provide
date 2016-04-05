@@ -1,0 +1,17 @@
+(function () {
+    'use strict';
+
+    angular.module('app').config(config);
+
+    config.$inject = ['$provide'];
+
+    function config($provide) {
+        $provide.service('usualMethod', function(){
+            this.someMethod = function(){return ' $provide.service someMethod'}
+        });
+
+    }
+})();
+
+
+$scope.test = usualMethod.someMethod(); //'it is  alive';
