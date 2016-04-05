@@ -1,0 +1,29 @@
+(function () {
+    'use strict';
+
+    angular.module('app').config(config);
+    config.$inject = ['epicFactoryProvider'];
+    function config(epicFactoryProvider) {
+        epicFactoryProvider.setData(' + edited ')
+    }
+})();
+
+(function () {
+    'use strict';
+    angular.module('app').provider('epicFactory', epicFactory);
+    function epicFactory() {
+        var data = 'epicFactory data';
+        return {
+            setData: function (val) {
+                data += val;
+            },
+            $get: function () {
+                return data
+            }
+        }
+    }
+})();
+
+function mainCtrl($scope, inbox, $q, $parse, $interpolate, CONST, APPVALUE, epicFactory) {
+
+            $scope.test = epicFactory; //'Page epicFactory data + edited';
