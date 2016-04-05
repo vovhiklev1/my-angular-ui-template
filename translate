@@ -1,0 +1,41 @@
+ angular.module('app', [
+            'ui.router',
+            'pascalprecht.translate'
+            ])
+        .config(config);
+
+function mainCtrl($scope, inbox, $q, $translate) {
+  
+            $scope.changeLang = function (lang) {
+                $translate.use(lang);
+            }
+            
+            
+            
+            
+(function () {
+    'use strict'
+
+    angular.module('app').config(config);
+    config.$inject = ['$translateProvider'];
+    function config($translateProvider) {
+        var message_En = {
+            'HEAD': 'Head text'
+        };
+        var message_Ru = {
+            'HEAD': 'Заглавие'
+        };
+
+        $translateProvider.translations('en', message_En);
+        $translateProvider.translations('ru', message_Ru);
+        $translateProvider.preferredLanguage('ru');
+       // $translateProvider.determinePreferredLanguage();
+        $translateProvider.useSanitizeValueStrategy(null);
+    }
+})();  
+
+
+<p>{{'HEAD'| translate}}</p>
+<input type="button" ng-click="changeLang('en')" value="en"/>
+<input type="button" ng-click="changeLang('ru')" value="ru"/>
+
