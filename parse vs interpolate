@@ -1,0 +1,13 @@
+       mainCtrl.$inject = ['$scope', 'inbox', '$q', '$parse', '$interpolate'];
+
+        function mainCtrl($scope, inbox, $q, $parse, $interpolate) {
+        
+            $scope.test = 'it is  alive';
+            
+            $scope.tpl_p = $parse('test')($scope);
+            $scope.tpl_i = $interpolate('some text {{test}}')($scope);
+            
+<h1></h1>
+interpolateProvider {{tpl_i}}
+<br>
+parse {{tpl_p}}
