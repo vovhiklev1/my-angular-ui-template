@@ -1,0 +1,65 @@
+(function () {
+    'use strict';
+
+    angular.module('app').config(config);
+
+    config.$inject = ['$provide'];
+
+ function config($provide) {
+        $provide.decorator('inbox', function ($delegate) {
+
+            $delegate.getMsg3 = function(obj){
+                return this.getMsg1();
+            };
+
+            return $delegate
+        })
+    }
+})();
+
+
+(function () {
+    'use strict';
+
+    angular.module('app')
+        .service('inbox', inbox);
+
+    inbox.$inject = ['$timeout', '$q'];
+
+function inbox($timeout, $q) {
+
+        angular.extend(this, {
+            getMsg1: getMsg1,
+            getMsg2: getMsg2           
+        })
+
+        function getMsg1() {
+            var deffered = $q.defer();
+            $timeout(function () {
+                deffered.resolve('1000')
+            }, 1000);
+
+            return deffered.promise;
+        }
+
+        function getMsg2() {
+            var deffered = $q.defer();
+            $timeout(function () {
+                deffered.reject('2000')
+            }, 1000);
+
+            return deffered.promise;
+        }
+    }
+})();
+
+
+ function mainCtrl($scope, inbox, $q, $parse, $interpolate) {
+            // $scope.test = 'it is  alive';
+
+            $q.when(inbox.getMsg3()).then(function (res) {
+                $scope.test = res
+            });
+            $q.when(inbox.getMsg1()).then(function (res) {
+                $scope.test = res
+            });
