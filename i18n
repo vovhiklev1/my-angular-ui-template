@@ -1,0 +1,15 @@
+  angular.module('app', [
+            'ui.router',
+            'ngMessageFormat'])
+        .config(config);
+        
+function mainCtrl($scope, inbox, $q) {
+           
+            
+<h1>i18n</h1>
+<input ng-model="fees">
+{{fees, plural,
+=0 { You have no many }
+=1 { You have one dollar }
+other {You have a lot of many}
+}}
