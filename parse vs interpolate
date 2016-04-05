@@ -6,8 +6,11 @@
             
             $scope.tpl_p = $parse('test')($scope);
             $scope.tpl_i = $interpolate('some text {{test}}')($scope);
+            $scope.tpl_e = $scope.$eval('test');
             
 <h1></h1>
-interpolateProvider {{tpl_i}}
-<br>
-parse {{tpl_p}}
+       interpolateProvider {{tpl_i}}
+       <br>
+       parse {{tpl_p}}
+       <br>
+       {{tpl_e}}
