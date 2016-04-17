@@ -1,0 +1,38 @@
+var singletone = (function () {
+    var instance;
+
+    function init() {
+        var inc = 0;
+
+        function get() {
+            console.log(inc);
+        }
+
+        function up() {
+            inc++
+        }
+
+        return {
+            get: get,
+            up: up
+        }
+    }
+
+    init.prototype.info = function(){
+        console.log(this.get + ' info')
+    }
+
+    init.prototype.info();
+
+    return {
+        getInstance: function () {
+            if (!instance) {
+                instance = init()
+            }
+            return instance
+        }
+    }
+
+})();
+
+var car = singletone.getInstance();
