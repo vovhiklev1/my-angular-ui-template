@@ -4,15 +4,13 @@
     angular.module('app')
         .controller('mainController', mainController);
 
-    mainController.$inject = ['$scope', '$state'];
+    mainController.$inject = ['$scope', '$state', 'parentNode'];
 
-    function mainController($scope, $state) {
-       /* $scope.arr = [];
-        for (var i = 0; i < 200; i++) {
-            $scope.arr[i] = i;
-        }*/
-
-
+    function mainController($scope, $state, parentNode) {
+        var ctrl = this;
+        angular.extend(ctrl, {
+            parentNode: parentNode
+        })
 
     }
 
