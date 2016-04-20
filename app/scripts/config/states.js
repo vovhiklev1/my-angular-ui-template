@@ -8,7 +8,7 @@
    /// config.$inject = [ '$stateProvider', '$urlRouterProvider'];
 
     function config( $stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when('', 'main');
+        $urlRouterProvider.when('/', 'main');
 
         $stateProvider
             .state('main', {
